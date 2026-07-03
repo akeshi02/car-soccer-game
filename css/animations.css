@@ -1,0 +1,152 @@
+/* Neon Glow Effects */
+@keyframes neonGlow {
+    0% {
+        text-shadow: 0 0 10px rgba(0, 212, 255, 0.5), 0 0 20px rgba(0, 212, 255, 0.3);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 0 40px rgba(0, 212, 255, 0.5);
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(0, 212, 255, 0.5), 0 0 20px rgba(0, 212, 255, 0.3);
+    }
+}
+
+/* Box Glow */
+@keyframes boxGlow {
+    0% {
+        box-shadow: 0 0 5px rgba(0, 212, 255, 0.2), inset 0 0 5px rgba(0, 212, 255, 0.1);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.4), inset 0 0 20px rgba(0, 212, 255, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(0, 212, 255, 0.2), inset 0 0 5px rgba(0, 212, 255, 0.1);
+    }
+}
+
+/* Scan Lines */
+@keyframes scan {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+/* Color Shift */
+@keyframes colorShift {
+    0% {
+        border-color: var(--primary-blue);
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    }
+    50% {
+        border-color: var(--primary-orange);
+        box-shadow: 0 0 20px rgba(255, 0, 110, 0.3);
+    }
+    100% {
+        border-color: var(--primary-blue);
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    }
+}
+
+/* Bounce In */
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Slide Right */
+@keyframes slideRight {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Rotate */
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Floating */
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Pulse Opacity */
+@keyframes pulseOpacity {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Color Cycle */
+@keyframes colorCycle {
+    0% {
+        color: var(--primary-blue);
+    }
+    25% {
+        color: var(--neon-green);
+    }
+    50% {
+        color: var(--primary-orange);
+    }
+    75% {
+        color: var(--neon-purple);
+    }
+    100% {
+        color: var(--primary-blue);
+    }
+}
+
+/* Blur In */
+@keyframes blurIn {
+    from {
+        filter: blur(10px);
+        opacity: 0;
+    }
+    to {
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+
+/* Scale Pulse */
+@keyframes scalePulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
