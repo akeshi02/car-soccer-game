@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0e27">
+    <meta name="description" content="3D Car Soccer - High-energy arcade gameplay with boost-powered acceleration and aerial maneuvers">
+    <title>3D Car Soccer | Rocket League Inspired</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <!-- Font Preload -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Hero Screen -->
+    <div id="hero-screen" class="hero-screen active">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">3D CAR SOCCER</h1>
+                <p class="hero-subtitle">High-Octane Arcade Action</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="startGame()">PLAY NOW</button>
+                    <button class="btn btn-secondary" onclick="showMenu('features')">FEATURES</button>
+                </div>
+            </div>
+            <canvas id="hero-canvas" class="hero-canvas"></canvas>
+        </div>
+    </div>
+
+    <!-- Main Menu -->
+    <div id="main-menu" class="menu-screen">
+        <div class="menu-container">
+            <button class="close-btn" onclick="closeMenu()">✕</button>
+            
+            <!-- Features Section -->
+            <div id="features-menu" class="menu-section">
+                <h2>FEATURES</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3>Boost Mechanics</h3>
+                        <p>Turbo-charge your car with strategic boost management</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">✈️</div>
+                        <h3>Aerial Maneuvering</h3>
+                        <p>Double jump and perform mid-air tricks</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Wall Driving</h3>
+                        <p>Scale walls and perform gravity-defying plays</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Gadgets & Abilities</h3>
+                        <p>Unlock special powers to dominate the field</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stadiums Section -->
+            <div id="stadiums-menu" class="menu-section hidden">
+                <h2>STADIUMS</h2>
+                <div class="stadium-grid">
+                    <div class="stadium-card active" data-stadium="neon-arena">
+                        <div class="stadium-preview">🏟️</div>
+                        <h3>Neon Arena</h3>
+                        <p>Electric blue and purple aesthetic</p>
+                    </div>
+                    <div class="stadium-card" data-stadium="cyber-dome">
+                        <div class="stadium-preview">🎆</div>
+                        <h3>Cyber Dome</h3>
+                        <p>Orange and teal sci-fi environment</p>
+                    </div>
+                    <div class="stadium-card" data-stadium="void-nexus">
+                        <div class="stadium-preview">🌌</div>
+                        <h3>Void Nexus</h3>
+                        <p>Dark space with neon accents</p>
+                    </div>
+                    <div class="stadium-card" data-stadium="plasma-ridge">
+                        <div class="stadium-preview">⚙️</div>
+                        <h3>Plasma Ridge</h3>
+                        <p>Industrial tech landscape</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cars Section -->
+            <div id="cars-menu" class="menu-section hidden">
+                <h2>CARS</h2>
+                <div class="cars-grid">
+                    <div class="car-card active" data-car="speed-demon">
+                        <div class="car-preview">🏎️</div>
+                        <h3>Speed Demon</h3>
+                        <p class="car-stats">⚡ Speed: 9/10 | 🛡️ Armor: 4/10</p>
+                    </div>
+                    <div class="car-card" data-car="tank-master">
+                        <div class="car-preview">🚙</div>
+                        <h3>Tank Master</h3>
+                        <p class="car-stats">⚡ Speed: 5/10 | 🛡️ Armor: 9/10</p>
+                    </div>
+                    <div class="car-card" data-car="balanced-rider">
+                        <div class="car-preview">🚗</div>
+                        <h3>Balanced Rider</h3>
+                        <p class="car-stats">⚡ Speed: 7/10 | 🛡️ Armor: 7/10</p>
+                    </div>
+                    <div class="car-card" data-car="agile-flash">
+                        <div class="car-preview">💨</div>
+                        <h3>Agile Flash</h3>
+                        <p class="car-stats">⚡ Speed: 8/10 | 🛡️ Armor: 6/10</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customization Section -->
+            <div id="customization-menu" class="menu-section hidden">
+                <h2>CUSTOMIZATION</h2>
+                <div class="customization-options">
+                    <div class="custom-group">
+                        <label>Car Color</label>
+                        <div class="color-picker">
+                            <div class="color-option" style="background: #00d4ff;" onclick="setCarColor('#00d4ff')"></div>
+                            <div class="color-option" style="background: #ff006e;" onclick="setCarColor('#ff006e')"></div>
+                            <div class="color-option" style="background: #00ff00;" onclick="setCarColor('#00ff00')"></div>
+                            <div class="color-option" style="background: #ffbe0b;" onclick="setCarColor('#ffbe0b')"></div>
+                        </div>
+                    </div>
+                    <div class="custom-group">
+                        <label>Trail Effect</label>
+                        <select onchange="setTrailEffect(this.value)">
+                            <option value="neon">Neon</option>
+                            <option value="fire">Fire</option>
+                            <option value="ice">Ice</option>
+                            <option value="plasma">Plasma</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Canvas -->
+    <canvas id="game-canvas"></canvas>
+
+    <!-- In-Game HUD -->
+    <div id="hud" class="hud hidden">
+        <div class="hud-top">
+            <div class="team-score">
+                <div class="team blue-team">
+                    <span class="team-name">BLUE</span>
+                    <span class="score" id="blue-score">0</span>
+                </div>
+                <div class="timer" id="timer">5:00</div>
+                <div class="team orange-team">
+                    <span class="score" id="orange-score">0</span>
+                    <span class="team-name">ORANGE</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hud-bottom">
+            <div class="player-info">
+                <div class="boost-bar">
+                    <div class="boost-fill" id="boost-fill"></div>
+                </div>
+                <span class="boost-text" id="boost-text">BOOST: 100%</span>
+            </div>
+            <div class="controls-hint" id="controls-hint">
+                <p>W/↑ Forward | S/↓ Back | A/← Left | D/→ Right | SPACE Jump | E Boost</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pause Menu -->
+    <div id="pause-menu" class="pause-overlay hidden">
+        <div class="pause-container">
+            <h2>PAUSED</h2>
+            <div class="pause-buttons">
+                <button class="btn btn-primary" onclick="resumeGame()">RESUME</button>
+                <button class="btn btn-secondary" onclick="returnToMenu()">MAIN MENU</button>
+                <button class="btn btn-secondary" onclick="toggleSettings()">SETTINGS</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/physics.js"></script>
+    <script src="js/input.js"></script>
+    <script src="js/camera.js"></script>
+    <script src="js/cars.js"></script>
+    <script src="js/ball.js"></script>
+    <script src="js/stadium.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
