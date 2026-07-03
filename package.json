@@ -1,0 +1,30 @@
+{
+  "name": "car-soccer-game",
+  "version": "1.0.0",
+  "description": "Browser-based 3D car-soccer game inspired by Rocket League",
+  "main": "js/main.js",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "build": "echo 'No build needed - web-based game'",
+    "test": "echo 'Testing...' && exit 0"
+  },
+  "keywords": [
+    "game",
+    "3d",
+    "soccer",
+    "rocket-league",
+    "arcade",
+    "browser",
+    "web",
+    "canvas",
+    "physics"
+  ],
+  "author": "Game Dev",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akeshi02/car-soccer-game"
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}
